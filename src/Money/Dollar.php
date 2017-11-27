@@ -3,7 +3,8 @@ namespace Money;
 
 class Dollar
 {
-    public $amount;
+    /** @var int */
+    private $amount;
 
     /**
      * constructor
@@ -25,7 +26,7 @@ class Dollar
     }
 
     /**
-     * @param $object
+     * @param mixed $object
      * @return bool
      */
     public function equals($object) : bool
