@@ -2,7 +2,6 @@
 
 namespace Test;
 
-use Money\Franc;
 use Money\Money;
 use PHPUnit\Framework\TestCase;
 
