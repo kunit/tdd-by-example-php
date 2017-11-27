@@ -2,7 +2,7 @@
 
 namespace Money;
 
-abstract class Money
+class Money
 {
     /** @var int */
     protected $amount;
@@ -26,7 +26,10 @@ abstract class Money
      * @param int $multiplier
      * @return Money
      */
-    abstract public function times(int $multiplier): Money;
+    public function times(int $multiplier): Money
+    {
+        return new Money($this->amount * $multiplier, $this->currency);
+    }
 
     /**
      * @return string
@@ -44,8 +47,16 @@ abstract class Money
     {
         return (($object instanceof self) &&
             ($this->amount === $object->amount) &&
-            (\get_class($object) === \get_class($this))
+            ($this->currency() === $object->currency())
         );
+    }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->amount . ' ' . $this->currency;
     }
 
     /**

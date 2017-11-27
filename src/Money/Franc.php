@@ -14,13 +14,4 @@ class Franc extends Money
     {
         parent::__construct($amount, $currency);
     }
-
-    /**
-     * @param int $multiplier
-     * @return Franc
-     */
-    public function times(int $multiplier) : Money
-    {
-        return new Franc($this->amount * $multiplier);
-    }
 }
