@@ -8,10 +8,11 @@ class Franc extends Money
      * constructor
      *
      * @param int $amount
+     * @param string $currency
      */
-    public function __construct(int $amount)
+    public function __construct(int $amount, string $currency = null)
     {
-        $this->amount = $amount;
+        parent::__construct($amount, $currency);
     }
 
     /**

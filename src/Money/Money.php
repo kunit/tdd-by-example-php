@@ -7,11 +7,34 @@ abstract class Money
     /** @var int */
     protected $amount;
 
+    /** @var string */
+    protected $currency;
+
+    /**
+     * constructor
+     *
+     * @param int $amount
+     * @param string $currency
+     */
+    public function __construct(int $amount, string $currency = null)
+    {
+        $this->amount = $amount;
+        $this->currency = $currency;
+    }
+
     /**
      * @param int $multiplier
      * @return Money
      */
     abstract public function times(int $multiplier): Money;
+
+    /**
+     * @return string
+     */
+    public function currency(): string
+    {
+        return $this->currency;
+    }
 
     /**
      * @param mixed $object
@@ -31,7 +54,7 @@ abstract class Money
      */
     public static function dollar(int $amount) : Money
     {
-        return new Dollar($amount);
+        return new Dollar($amount, 'USD');
     }
 
     /**
@@ -40,6 +63,6 @@ abstract class Money
      */
     public static function franc(int $amount): Money
     {
-        return new Franc($amount);
+        return new Franc($amount, 'CHF');
     }
 }
